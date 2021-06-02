@@ -1,23 +1,32 @@
 import React from 'react';
 import UserCard from './UserCard';
+import { UsersContextConsumer } from './context/UserContext';
+import './UserCardList.styles.css';
 
-const UserCardList = ({users}, {logins}) => {
+const UserCardList = () => {
 	return (
-		<div>
-		    {users.map((user,i) =>{
-		return  (<UserCard 
-			key={i} 
-			id={users[i].id} 
-			name={users[i].name} 
-			email={`${users[i].name.split(' ')[0]}@robots.com`}
-			biography={users[i].biography}
-			password={users[i].password}
-			username={users[i].username}
-			logged={users[i].isLoggedIn}
-			/>
-		);
-		})}
-	   </div>
+		<UsersContextConsumer>
+			{
+				({users, deleteUser}) => (
+				<div className= 'usercard-list'>
+					{
+						users.map(user => <UserCard 
+						key={user.id}
+						id={user.id}
+						name={user.name} 
+						email={`${user.name.split(' ')[0]}@robots.com`}
+						biography={user.biography}
+						password={user.password}
+						username={user.username}
+						logged={user.isLoggedIn}
+						deleteUser={deleteUser}
+						/>)
+					}
+				</div>
+				)
+			}
+		</UsersContextConsumer>
+		
 	);
 }
 

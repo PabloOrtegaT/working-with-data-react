@@ -1,28 +1,20 @@
-// import UserCardList from '../components/CardList';
-import { users } from '../users';
-// import ErrorBoundry from '../components/ErrorBoundry';
+import { USERS } from '../users';
 import './App.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import UserCardList from '../components/UserCardList';
+import Button from '../components/Button';
+import { ThemeContext } from '../components/context/ThemeContext';
 
-class App extends React.Component {  
-  
-  constructor(){
-		super()
-		this.state = {
-			users: []
-		}
-	}
+const App = () => {  
+    const { theme } = useContext(ThemeContext);
 
-  render(){
-    return <div className="App">
-      <header className="App-header">
-        <UserCardList 
-          users={users} 
-        />
-      </header>
-    </div>
-  }
+    return (
+      <div className="App">
+          <Button />
+          <UserCardList>
+          </UserCardList>
+      </div>
+    );
   
 }
 

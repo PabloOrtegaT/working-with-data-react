@@ -4,7 +4,7 @@
 // import avatar4 from '../images/avatar4.png';
 // import avatar5 from '../images/avatar5.png';
 
-export const users = [
+export const USERS = [
   {
     id: 1,
     name: "Jhon Doe",

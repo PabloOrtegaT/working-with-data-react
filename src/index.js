@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import 'tachyons'
+import { ThemeContextConsumer, ThemeContextProvider } from './components/context/ThemeContext';
+import { UsersContextProvider } from './components/context/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <UsersContextProvider>
+        <App />
+      </UsersContextProvider>
+    </ThemeContextProvider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
