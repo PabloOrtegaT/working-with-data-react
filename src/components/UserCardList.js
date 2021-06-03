@@ -7,19 +7,18 @@ const UserCardList = () => {
 	return (
 		<UsersContextConsumer>
 			{
-				({users, deleteUser}) => (
+				({users, deleteUser, addUser}) => (
 				<div className= 'usercard-list'>
 					{
 						users.map(user => <UserCard 
 						key={user.id}
 						id={user.id}
-						name={user.name} 
-						email={`${user.name.split(' ')[0]}@robots.com`}
-						biography={user.biography}
-						password={user.password}
-						username={user.username}
+						name={`${user.first_name} ${user.last_name}`} 
+						email={user.email}
+						avatar={user.avatar == null ? `https://reqres.in/img/faces/${user.id}-image.jpg` : user.avatar}
 						logged={user.isLoggedIn}
 						deleteUser={deleteUser}
+						addUser={addUser}
 						/>)
 					}
 				</div>
